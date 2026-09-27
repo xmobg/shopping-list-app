@@ -1,6 +1,6 @@
 # Shopping List App
 
-A simple web app for managing personal shopping lists, built with Flask. Users can register, log in, create multiple named lists (e.g. "Седмичен пазар", "Партита"), add items to each list with a quantity and category, and check items off as they're bought.
+A simple web app for managing personal shopping lists, built with Flask. Users can register, log in, create multiple named lists , add items to each list with a quantity and category, and check items off as they're bought.
 
 ## Features
 
