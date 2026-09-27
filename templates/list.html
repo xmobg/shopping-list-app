@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ shopping_list.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <a href="/">&larr; Назад към списъците</a>
+        <h1>{{ shopping_list.name }}</h1>
+
+        <form method="POST" action="/list/{{ shopping_list.id }}/delete">
+            <button type="submit">Изтрий целия списък</button>
+        </form>
+
+        <form method="POST" action="/list/{{ shopping_list.id }}/add-item">
+            <input type="text" name="name" placeholder="Продукт" required>
+            <input type="number" name="quantity" placeholder="Количество" required>
+            <input type="text" name="category" placeholder="Категория" required>
+            <button type="submit">Добави</button>
+        </form>
+
+        <ul class="items">
+            {% for item in shopping_list.items %}
+                <li class="{{ 'bought' if item.is_bought }}">
+                    <form method="POST" action="/item/{{ item.id }}/toggle">
+                        <input type="checkbox" onchange="this.form.submit()" {{ 'checked' if item.is_bought }}>
+                    </form>
+                    {{ item.name }} — {{ item.quantity }} бр. ({{ item.category }})
+                    <form method="POST" action="/item/{{ item.id }}/delete" style="margin-left:auto;">
+                        <button type="submit">✕</button>
+                    </form>
+                </li>
+            {% else %}
+                <li>Няма продукти все още.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

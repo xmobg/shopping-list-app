@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Регистрация</h1>
+        <form method="POST" action="/register">
+            <label for="name">Име</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Имейл</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="username">Потребителско име</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Парола</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Регистрирай се</button>
+        </form>
+    </div>
+</body>
+</html>

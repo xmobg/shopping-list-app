@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>Моите списъци</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="dashboard-container">
+        <h1>Моите списъци</h1>
+        <a href="/logout">Изход</a>
+    <form method="POST" action="/create-list">
+    <input type="text" name="name" placeholder="Име на нов списък" required>
+    <button type="submit">Създай</button>
+</form>
+        <ul class="lists">
+            {% for list in lists %}
+               <li>
+    <a href="/list/{{ list.id }}">{{ list.name }}</a>
+    <form method="POST" action="/list/{{ list.id }}/delete">
+        <button type="submit">✕</button>
+    </form>
+</li>
+            {% else %}
+                <li>Нямаш списъци все още.</li>
+            {% endfor %}
+        </ul>
+
+    </div>
+</body>
+</html>
